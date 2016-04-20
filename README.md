@@ -2,6 +2,8 @@
 Nodejs telegram bot
 
 Simple javascript telegram bot just for fun)
+> ##Установка npm зависимостей
+> npm install
 
 - Excuses from https://github.com/littleguga/excuse-generator
 - Cats images from http://thecatapi.com/
