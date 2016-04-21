@@ -11,18 +11,22 @@ var bot = new TelegramBot(token, {polling: true});
 bot.on('message', function (msg) {
 	if(msg) {
 		console.log(msg.text, msg.from.id);
-    //Получаем шортики
-	if(msg.text.indexOf('!шутка') != -1) {
-		request({
-		url: "http://shortiki.com/export/api.php?format=json&type=random&amount=1",
-		json: true
-	}, function (error, response, body) {
-    	if (!error && response.statusCode === 200) {
-    	  	bot.sendMessage(msg.chat.id, ''+ body[0].content);
-		}
-	});
-	}
-
+    //Сиськи
+    if(msg.text.indexOf('!сиськи') != -1) {
+        request({
+        url: "https://tits-guru.com/randomTits",
+        type: 'GET'
+    }, function (error, response, body) {
+        if (!error && response.statusCode === 200) {
+            var src = body.match(/img src="(.*)"/gmi);
+            var newsrc = src[14].split(' ')[1];
+                newsrc = newsrc.replace('"', '');
+                newsrc = newsrc.replace('"', '');
+                newsrc = newsrc.replace('src=', '');
+            bot.sendMessage(msg.chat.id, ''+ newsrc);
+        }
+    });
+    }
     //Котаны
 	if(msg.text.indexOf('!котики') != -1) {
 		request({
