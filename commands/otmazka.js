@@ -1,5 +1,5 @@
 var Excuses = require("./excuses");
-module.exports = {
+var Generator = {
     init: function () {
 
     },
@@ -68,3 +68,8 @@ module.exports = {
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+module.exports = function (msg, bot) {
+    var name = msg.text.toLowerCase().replace('!отмазка ', '');
+    bot.sendMessage(msg.chat.id, ''+ Generator.generate(name));
+}

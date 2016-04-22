@@ -107,7 +107,12 @@ function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-module.exports = function (name) {
+function Psihoterapia (name) {
 	var index = Math.ceil(getRandomArbitrary(0, Arr.length));
 	return name + ' ' + Arr[index];
 }
+
+module.exports = function (msg, bot) {
+	var name = msg.text.toLowerCase().replace('!психотерапия ', '');
+  	bot.sendMessage(msg.chat.id, Psihoterapia(name));
+};
